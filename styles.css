@@ -1,0 +1,140 @@
+/* Estilo base para la página */
+body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+
+}
+
+
+/* Estilo de la barra lateral */
+.sidebar {
+    width: 50px; /* Ancho inicial mínimo para que el usuario haga clic */
+    height: 100%;
+    background: rgb(223,236,236);
+    background: radial-gradient(circle, rgba(223,236,236,1) 70%, rgba(55,170,246,0.37290890477284666) 93%);
+    color: #fff;
+    padding: 5px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-x: hidden;
+    position: fixed;
+    transition: width 0.5s; /* Solo animar el ancho */
+    z-index: 1;
+    
+  
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* Elimina el espacio en blanco dentro de la lista */
+}
+
+.sidebar li {
+    color: #002942;
+    text-decoration: none;
+    margin-bottom: 20px;
+    text-align: center;
+    visibility: hidden; /* Oculta los elementos de navegación cuando la barra está oculta */
+}
+.sidebar.active li {
+    visibility: visible; /* Muestra los elementos de navegación cuando la barra está activa */
+}
+
+/* Estilo del contenido principal */
+.content {
+    flex-grow: 1;
+    display: flex;
+    transition: margin-left 0.5s; /* Ajustar el margen al abrir/cerrar la barra */
+}
+
+.column {
+    width: 33.33%;
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f2f2f2;
+    min-height: 100vh;
+    cursor: pointer;
+    
+}
+
+/* Estilo para mostrar la barra lateral */
+.sidebar.active {
+    width: 16.666%; /* 1/6 de la pantalla */
+}
+
+.sidebar.active ul li {
+    display: block; /* Muestra los elementos de navegación cuando la barra está activa */
+}
+
+/* Estilo para ajustar el margen del contenido cuando la barra lateral está activa */
+.sidebar.active + .content {
+    margin-left: 16.666%; /* Desplazar el contenido hacia la derecha */
+}
+
+/* Estilo del botón de alternar la barra lateral */
+#toggleSidebar {
+    background-color: transparent; /* Establece el fondo transparente */
+    color:#002942;
+    border: none;
+    padding: 10px 0;
+    cursor: pointer;
+    width: 50px;
+    text-align: center;
+    margin-left: auto; /* Mueve el botón hacia la derecha (espacio automático en el lado izquierdo) */
+    animation: heartbeat 2s infinite;
+}
+#toggleSidebar svg {
+    width: 24px; /* Ancho deseado */
+    height: 24px; /* Altura deseada */
+}
+
+/* Estilo del contenedor del botón */
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.content {
+    flex-grow: 1;
+    display: flex;
+    transition: margin-left 0.5s; /* Ajustar el margen al abrir/cerrar la barra */
+    margin-left: 20px; /* Añade espacio para el botón de 60px */
+}
+
+
+/* Animaciones */
+@keyframes heartbeat {
+    0% {
+      transform: scale(1);
+      
+    }
+    25% {
+      transform: scale(1.1);
+      color:#4d97c595;
+    }
+    50% {
+      transform: scale(1);
+      color:#2e8ccb;
+    }
+    75% {
+      transform: scale(1.1);
+      
+    }
+    50% {
+      transform: scale(1);
+      
+    }
+  }
