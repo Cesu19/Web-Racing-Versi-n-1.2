@@ -45,7 +45,33 @@ body {
 .sidebar.active li {
     visibility: visible; /* Muestra los elementos de navegación cuando la barra está activa */
 }
+.sidebar:not(.active) .club-logo {
+    display: none;
+}
 
+/* Estilo para el enlace del club cuando el sidebar está abierto */
+.sidebar.active .club-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #002942;
+    text-decoration: none;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+.club-logo-image,
+h1 {
+    margin-bottom: 0px; /* Puedes cambiar este valor según tus preferencias */
+}
+
+/* Estilo para la imagen del escudo cuando el sidebar está abierto */
+.sidebar.active .club-logo-image {
+    width: 5rem; /* Ajusta el ancho de la imagen según sea necesario */
+    height: 5rem; /* Ajusta el alto de la imagen según sea necesario */
+    margin-bottom: 10px; /* Espacio entre la imagen y el título */
+}
 /* Estilo del contenido principal */
 .content {
     flex-grow: 1;
@@ -70,7 +96,7 @@ body {
 
 /* Estilo para mostrar la barra lateral */
 .sidebar.active {
-    width: 16.666%; /* 1/6 de la pantalla */
+    width: 18%; /* 1/6 de la pantalla */
 }
 
 .sidebar.active ul li {
@@ -79,7 +105,7 @@ body {
 
 /* Estilo para ajustar el margen del contenido cuando la barra lateral está activa */
 .sidebar.active + .content {
-    margin-left: 16.666%; /* Desplazar el contenido hacia la derecha */
+    margin-left: 18%; /* Desplazar el contenido hacia la derecha */
 }
 
 /* Estilo del botón de alternar la barra lateral */
