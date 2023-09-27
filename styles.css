@@ -1,5 +1,6 @@
 /* Estilo base para la página */
 body {
+    font-family: 'Times New Roman', Times, serif;
     display: flex;
     margin: 0;
     padding: 0;
@@ -34,7 +35,10 @@ body {
     padding: 0;
     margin: 0; /* Elimina el espacio en blanco dentro de la lista */
 }
-
+.sidebar a {
+    text-decoration: none;
+    
+}
 .sidebar li {
     color: #002942;
     text-decoration: none;
@@ -75,6 +79,7 @@ h1 {
 /* Estilo del contenido principal */
 .content {
     flex-grow: 1;
+    height: 100vh;
     display: flex;
     transition: margin-left 0.5s; /* Ajustar el margen al abrir/cerrar la barra */
 }
@@ -82,6 +87,9 @@ h1 {
 .column {
     width: 33.33%;
     box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -91,7 +99,75 @@ h1 {
     background-color: #f2f2f2;
     min-height: 100vh;
     cursor: pointer;
+    position: relative; /* Añade posición relativa para que el contenido interno sea posicionado con respecto a la columna */
+    overflow: hidden; /* Oculta cualquier contenido que se desborde de la columna */
+}
+
+/* Estilo para la imagen de fondo de las columnas */
+.column::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
     
+    transition: opacity 0.3s ease; /* Transición suave de opacidad */
+}
+/* Estilo para el título y el párrafo dentro de las columnas */
+.column p {
+    position: absolute;
+    top: calc(50% + 15%); /* Ajusta la distancia desde la parte superior del título (ajusta el valor según sea necesario) */
+    left: 50%;
+    transform: translateX(-50%); /* Centra horizontalmente el párrafo */
+    opacity: 0; /* Inicialmente oculto */
+    transition: opacity 0.3s ease; /* Transición suave de opacidad */
+    z-index: 1; /* Asegura que el texto esté sobre la imagen de fondo */
+    color: #fff;
+    margin-top: 10px;
+}
+
+.column h1 {
+    font: bolder;
+    position: absolute;
+    top: calc(35% + 15%); /* Ajusta la distancia desde la parte superior del título (ajusta el valor según sea necesario) */
+    left: 50%;
+    transform: translateX(-50%); /* Centra horizontalmente el párrafo */
+    opacity: 0; /* Inicialmente oculto */
+    transition: opacity 0.3s ease; /* Transición suave de opacidad */
+    z-index: 1; /* Asegura que el texto esté sobre la imagen de fondo */
+    color: #fff;
+    margin-top: 10px;
+}
+
+.column h2 {
+    font-size: 38px;
+    position: absolute;
+    top: 50%; /* Centra verticalmente el título en la columna */
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1); /* Centra y escala el título */
+    color: #fff;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease; /* Transición suave de escala */
+}
+
+/* Estilo para mostrar el título y el párrafo cuando el cursor pasa sobre la columna */
+.column:hover::before {
+    opacity: 0.7; /* Opacidad reducida al pasar el cursor */
+}
+
+.column:hover h2,
+.column:hover h1,
+.column:hover p {
+    opacity: 1; /* Muestra el título y el párrafo al pasar el cursor */
+    transform: translate(-50% , -50%) scale(1.5);
+}
+
+/* Estilo para ocultar el nuevo h1 */
+.hidden {
+    display: none;
 }
 
 /* Estilo para mostrar la barra lateral */
@@ -121,8 +197,8 @@ h1 {
     animation: heartbeat 2s infinite;
 }
 #toggleSidebar svg {
-    width: 24px; /* Ancho deseado */
-    height: 24px; /* Altura deseada */
+    width: 28px; /* Ancho deseado */
+    height: 28px; /* Altura deseada */
 }
 
 /* Estilo del contenedor del botón */
@@ -164,3 +240,101 @@ h1 {
       
     }
   }
+
+  /* Estilo para la imagen de fondo de las columnas */
+  #estadio {
+    background-image: url('Estadio\ Lateral.jpg');
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir toda la columna */
+    background-position: center; /* Centra la imagen en la columna */
+    background-repeat: no-repeat;
+}
+
+#historia {
+    background-image: url('Gente.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+
+
+#idolos {
+    background-image: url('Perfumo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+   
+}
+.bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Inicialmente oculta la imagen de fondo */
+    transition: opacity 0.3s ease; /* Transición suave de opacidad */
+}
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); /* Agrega un fondo con gradiente linear oscuro */
+    opacity: 0; /* Inicialmente oculta la capa */
+    transition: opacity 0.3s ease; /* Transición suave de opacidad */
+    pointer-events: none; /* Evita que la capa superpuesta bloquee eventos del contenido */
+}
+
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f3f3f3;
+    z-index: 999999;
+    background-image: url('vector.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 4.6rem 4.6rem;
+    
+}
+.spinner {
+    
+    border: 4px solid #37aaf6;
+    width: 100px; /* Ancho del spinner */
+    height: 100px; /* Alto del spinner */
+    border-radius: 50%;
+    border-left-color: transparent;
+    animation: spin 1.3s linear infinite; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    
+}
+
+@keyframes spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+/* Clase para ocultar el spinner */
+.hide-spinner .spinner {
+    display: none;
+}
+
+/* Clase para mostrar el contenido principal */
+.show-content .content {
+    display: block;
+}

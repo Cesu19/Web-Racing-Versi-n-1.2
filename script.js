@@ -1,3 +1,12 @@
+// Espera a que la página se cargue completamente
+window.addEventListener('load', function () {
+    // Simula pantalla de carga
+    setTimeout(function () {
+        // Ocultar el elemento .loader
+        document.querySelector('.loader').style.display = 'none';
+    }, 2000);
+});
+
 document.getElementById("toggleSidebar").addEventListener("click", function () {
     const sidebar = document.querySelector(".sidebar");
     const content = document.querySelector(".content");
@@ -15,7 +24,7 @@ document.getElementById("toggleSidebar").addEventListener("click", function () {
     } else {
         // Cuando la barra lateral no está activa, restaura el margen izquierdo de las columnas a 50px
         columns.forEach(function (column) {
-            column.style.marginLeft = "50px";
+            column.style.marginLeft = "0";
         });
     }
 });
@@ -61,3 +70,68 @@ sidebarButton.addEventListener("click", function () {
     }
 });
 
+// Selector de todas las columnas
+const columns = document.querySelectorAll(".column");
+
+// Itera sobre cada columna
+columns.forEach((column) => {
+    // Encuentra el título (H2) y el párrafo (P) dentro de la columna
+    const title = column.querySelector("h2");
+    const paragraph = column.querySelector("p");
+    const h1 = column.querySelector("h1");
+
+    // Agrega un evento para mostrar el párrafo cuando el cursor entra en la columna
+    column.addEventListener("mouseenter", () => {
+        paragraph.style.opacity = "1";
+        h1.style.opacity="1";
+    });
+
+    // Agrega un evento para ocultar el párrafo cuando el cursor sale de la columna
+    column.addEventListener("mouseleave", () => {
+        paragraph.style.opacity = "0";
+        h1.style.opacity="0";
+    });
+});
+
+// Itera sobre cada columna
+columns.forEach((column) => {
+    // Encuentra la capa superpuesta dentro de la columna
+    const overlay = column.querySelector(".overlay");
+    let isHovered = false;
+
+    // Agrega un evento para cambiar la opacidad de la capa superpuesta al pasar el cursor sobre la columna
+    column.addEventListener("mouseenter", () => {
+        if (!isHovered) {
+            overlay.style.opacity = "0.8"; // Cambia la opacidad de la capa superpuesta a 0.7 cuando el cursor entra en la columna
+            isHovered = true;
+        }
+    });
+
+    // Agrega un evento para restaurar la opacidad de la capa superpuesta cuando el cursor sale de la columna
+    column.addEventListener("mouseleave", () => {
+        overlay.style.opacity = "0"; // Restaura la opacidad de la capa superpuesta a 0 (invisible) cuando el cursor sale de la columna
+        isHovered = false;
+    });
+});
+
+// Itera sobre cada columna
+columns.forEach((column) => {
+    // Encuentra el h2, el nuevo h1 y el párrafo dentro de la columna
+    const h2 = column.querySelector("h2");
+    let isHovered = false;
+
+    // Agrega un evento para mostrar el nuevo h1 y ocultar el h2 cuando el cursor entra en la columna
+    column.addEventListener("mouseenter", () => {
+        if (!isHovered) {
+            h2.style.display = "none"; // Oculta el h2
+            isHovered = true;
+        }
+    });
+
+    // Agrega un evento para restaurar el estado original cuando el cursor sale de la columna
+    column.addEventListener("mouseleave", () => {
+        h2.style.display = "block"; // Muestra nuevamente el h2
+    
+        isHovered = false;
+    });
+});

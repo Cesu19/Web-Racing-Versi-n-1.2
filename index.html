@@ -7,6 +7,9 @@
     <title>Navegación Lateral Desplegable</title>
 </head>
 <body>
+    <div class="loader">
+        <div class="spinner"></div>
+    </div>
     <div class="sidebar">
         <div class="sidebar-content">
             <a href="#el-club" class="club-logo">
@@ -23,20 +26,40 @@
         </button>
         
         <ul>
-            <li>El club</li>
-            <li>Deportes</li>
-            <li>Áreas</li>
-            <li>Tita Mattiusi</li>
-            <li>Camisetas</li>
-            <li>Áreas</li>
+           <a href=""> <li>El club</li></a>
+           <a href=""><li>Deportes</li></a>
+            <a href=""><li>Áreas</li></a>
+            <a href=""><li>Tita Mattiusi</li></a>
+            <a href=""><li>Escudo</li></a>
+            <a href=""><li>Camiseta</li></a>
             <!-- Agrega más elementos de navegación aquí -->
         </ul>
         </div>
     </div>
     <div class="content">
-        <div class="column">Columna 1</div>
-        <div class="column">Columna 2</div>
-        <div class="column">Columna 3</div>
+        <div class="column" id="estadio">
+            <h2>Estadio</h2>
+            <h1>Estadio</h1>
+            <p>Nacido el 03 de Septiembre de 1950, el Cilindro de Avellaneda es testigo de las más grandes hazañas.</p>
+            <div class="bg-image" id="estadio-bg"></div>
+            <div class="overlay"></div>
+        </div>
+        <div class="column" id="historia">
+            <h1 >Historia</h1>
+            <h2>Historia</h2>
+            <p>Desde el 25 de Marzo de 1903, siendo el Primer Grande.</p>
+            <div class="bg-image" id="historia-bg"></div>
+            <div class="overlay"></div>
+        </div>
+        <div class="column" id="idolos">
+            <a href="idolos.html">
+            <h1>Idolos</h1>
+            <h2>Idolos</h2>
+            <p>Grandes valores que pasaron por nuestra institución y dejaron su huella en la historia grande del club</p>
+            <div class="bg-image" id="idolos-bg"></div>
+            <div class="overlay"></div>
+        </a>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
